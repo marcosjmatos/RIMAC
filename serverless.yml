@@ -1,0 +1,53 @@
+service: RIMAC
+frameworkVersion: '3'
+
+plugins:
+  - serverless-plugin-typescript
+  - serverless-offline
+
+provider:
+  name: aws
+  runtime: nodejs16.x
+
+functions:
+  hello:
+    handler: src/index.hello
+    events:
+      - httpApi:
+          path: /
+          method: get
+  getFilms:
+    handler: src/index.getFilms
+    events:
+      - httpApi:
+          path: /films
+          method: get
+  getPeople:
+    handler: src/index.getPeople
+    events:
+      - httpApi:
+          path: /people
+          method: get
+
+
+resources:
+  Resources:
+    # DynamoDB tables
+    FilmsTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: Films
+        KeySchema:
+          - AttributeName: id
+            KeyType: HASH
+        AttributeDefinitions:
+          - AttributeName: id
+            AttributeType: S
+          - AttributeName: titulo
+            AttributeType: S
+          - AttributeName: año
+            AttributeType: S
+          - AttributeName: director
+            AttributeType: S          
+          - AttributeName: episodio
+            AttributeType: S
