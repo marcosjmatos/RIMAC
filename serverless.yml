@@ -22,11 +22,11 @@ functions:
       - httpApi:
           path: /films
           method: get
-  getPeople:
-    handler: src/index.getPeople
+  getStarships:
+    handler: src/index.getStarships
     events:
       - httpApi:
-          path: /people
+          path: /starships
           method: get
 
 
