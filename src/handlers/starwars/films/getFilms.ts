@@ -3,6 +3,8 @@ import {
   APIGatewayProxyResult
 } from 'aws-lambda';
 import fetch from 'node-fetch';
+import { Film, FilmInterface } from '../../../mappers/film-mapper';
+
 
 const getFilms = async (
   event: APIGatewayProxyEvent
@@ -12,8 +14,18 @@ const getFilms = async (
   try {
     const response = await fetch(
       'https://swapi.py4e.com/api/films/'
-    );
-    const data = await response.json();
+    )
+
+    const data:Film = await response.json()
+
+    // const mapped = new Film({
+    //   título:data.title,
+    //   director:data.director,
+
+    // })
+
+
+
     return {
       statusCode: 200,
       body: JSON.stringify(data)

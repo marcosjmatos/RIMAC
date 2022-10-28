@@ -8,6 +8,13 @@ plugins:
 provider:
   name: aws
   runtime: nodejs16.x
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:*
+      Resourse:
+        - arn:aws:dynamodb:us-east-1:060844096599:table/Films
+
 
 functions:
   hello:
@@ -37,17 +44,11 @@ resources:
       Type: AWS::DynamoDB::Table
       Properties:
         TableName: Films
-        KeySchema:
-          - AttributeName: id
-            KeyType: HASH
+        BillingMode: PAY_PER_REQUEST
         AttributeDefinitions:
           - AttributeName: id
             AttributeType: S
-          - AttributeName: titulo
-            AttributeType: S
-          - AttributeName: año
-            AttributeType: S
-          - AttributeName: director
-            AttributeType: S          
-          - AttributeName: episodio
-            AttributeType: S
+        KeySchema:
+          - AttributeName: id
+            KeyType: HASH
+

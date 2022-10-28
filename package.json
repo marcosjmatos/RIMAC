@@ -5,7 +5,7 @@
   "scripts": {
     "watch": "nodemon src/index.ts",
     "start:offline":"serverless offline",
-    "dev":"concurrently --kill-others \"npm run start:offline\" \"npm run watch\""
+    "dev":"concurrently --kill-others \"npm run start:offline\" && \"npm run watch\""
   },
   "repository": {
     "type": "git",
