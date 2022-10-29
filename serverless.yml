@@ -1,5 +1,6 @@
 service: RIMAC
 frameworkVersion: '3'
+useDotenv: true
 
 plugins:
   - serverless-plugin-typescript
@@ -12,7 +13,7 @@ provider:
     - Effect: Allow
       Action:
         - dynamodb:*
-      Resourse:
+      Resource:
         - arn:aws:dynamodb:us-east-1:060844096599:table/Films
 
 
@@ -29,6 +30,12 @@ functions:
       - httpApi:
           path: /films
           method: get
+  updateFilm:
+    handler: src/index.updateFilm
+    events:
+      - httpApi:
+          path: /films/{episodio}
+          method: put
   getStarships:
     handler: src/index.getStarships
     events:
@@ -46,9 +53,20 @@ resources:
         TableName: Films
         BillingMode: PAY_PER_REQUEST
         AttributeDefinitions:
-          - AttributeName: id
+          - AttributeName: episodio_id
             AttributeType: S
         KeySchema:
-          - AttributeName: id
+          - AttributeName: episodio_id
+            KeyType: HASH
+    StarshipsTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: Starships
+        BillingMode: PAY_PER_REQUEST
+        AttributeDefinitions:
+          - AttributeName: nombre
+            AttributeType: S
+        KeySchema:
+          - AttributeName: nombre
             KeyType: HASH
 

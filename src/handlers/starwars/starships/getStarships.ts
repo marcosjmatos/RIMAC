@@ -2,41 +2,22 @@ import {
   APIGatewayProxyEvent,
   APIGatewayProxyResult
 } from 'aws-lambda';
-import fetch from 'node-fetch';
+import getData from '../../../utils/getData';
 
 const getStarships = async (
-  event: APIGatewayProxyEvent
+  _: APIGatewayProxyEvent
 ): Promise<APIGatewayProxyResult> => {
-
   try {
-    const response = await fetch(
-      "https://swapi.py4e.com/api/starships/")
-    const data = await response.json();
-
-
-
-
     return {
       statusCode: 200,
-      body: JSON.stringify(data)
+      body: JSON.stringify(await getData('Starships'))
     };
-
-
-  
   } catch (e) {
     return {
       statusCode: 500,
       body: JSON.stringify(e)
     };
   }
-
-  
-  
 };
-
-
-
-
-
 
 export default getStarships;

@@ -1,0 +1,38 @@
+documentation:
+  version: '1'
+  title: 'RIMAC API'
+  description: 'Esta es una API simple para RIMAC'
+  models:
+    - name: ErrorResponse
+      description: This is an error
+      contentType: application/json
+      schema: ${file(models/ErrorResponse.json)}
+    - name: PutDocumentResponse
+      description: PUT Document request model (inline example)
+      contentType: application/json
+      schema:
+        $schema: ${file(models/PutDocumentResponse.json)}
+
+endpoints:
+  getFilms:
+    Summary: 'Obtener Peliculas'
+    description: 'Obtener todos las peliculas de Star Wars'
+    pathParams:
+      - name: episode
+        description: El episodio de la pelicula a buscar
+        schema:
+          type: string
+          pattern: '^[1-9]$'
+    methodResponses:
+      - statusCode: 201
+        responseBody:
+          description:
+            A user object along with generated API Keys
+        responseModels:
+          application/json: PutDocumentResponse
+      - statusCode: 500
+        responseBody:
+          description:
+            An error message when creating a new user
+        responseModels:
+          application/json: ErrorResponse

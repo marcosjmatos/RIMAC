@@ -1,6 +1,6 @@
 export { hello } from './handlers/hello';
 export {
-  createFilm,
-  getFilms,
+  updateFilm,
+  getFilms
 } from './handlers/starwars/films';
-export {createStarship,getStarships} from './handlers/starwars/starships'
+export { getStarships } from './handlers/starwars/starships';

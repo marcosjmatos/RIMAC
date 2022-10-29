@@ -1,3 +1,3 @@
-export { default as createFilm } from './createFilm';
+export { default as updateFilm } from './updateFilm';
 export { default as getFilms } from './getFilms';
 

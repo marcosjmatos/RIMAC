@@ -4,8 +4,8 @@
   "description": "<!-- title: 'AWS Simple HTTP Endpoint example in NodeJS' description: 'This template demonstrates how to make a simple HTTP API with Node.js running on AWS Lambda and API Gateway using the Serverless Framework.' layout: Doc framework: v3 platform: AWS language: nodeJS authorLink: 'https://github.com/serverless' authorName: 'Serverless, inc.' authorAvatar: 'https://avatars1.githubusercontent.com/u/13742415?s=200&v=4' -->",
   "scripts": {
     "watch": "nodemon src/index.ts",
-    "start:offline":"serverless offline",
-    "dev":"concurrently --kill-others \"npm run start:offline\" && \"npm run watch\""
+    "start:offline": "serverless offline",
+    "dev": "concurrently --kill-others \"npm run start:offline\" && \"npm run watch\""
   },
   "repository": {
     "type": "git",
@@ -20,7 +20,10 @@
   "homepage": "https://github.com/marcosjmatos/RimacApiwithAWS#readme",
   "dependencies": {
     "@aws-sdk/client-dynamodb": "^3.196.0",
-    "node-fetch": "^2.6.7"
+    "@aws-sdk/util-dynamodb": "^3.199.0",
+    "lodash": "^4.17.21",
+    "node-fetch": "^2.6.7",
+    "translate": "^1.4.1"
   },
   "devDependencies": {
     "@types/aws-lambda": "^8.10.108",
