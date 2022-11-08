@@ -1,4 +1,3 @@
-export { hello } from './handlers/hello';
 export {
   updateFilm,
   getFilms

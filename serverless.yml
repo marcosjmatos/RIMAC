@@ -18,12 +18,6 @@ provider:
 
 
 functions:
-  hello:
-    handler: src/index.hello
-    events:
-      - httpApi:
-          path: /
-          method: get
   getFilms:
     handler: src/index.getFilms
     events:
